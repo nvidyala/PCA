@@ -110,9 +110,18 @@ def main():
 		for sample in iris_X:
 			X[i].append(sample[i])
 
-	target_data = X
-	cov_data = cov_matrix(target_data,150)
-	pearson_data,spearman_data = correlation_matrix(target_data,150)
+	target_data1 = X
+
+	for feature in X:
+		mean = sum(feature)/len(feature)
+
+		for value in feature:
+			value = value-mean
+
+	target_data2 = X
+
+	cov_data = cov_matrix(target_data2,150)
+	pearson_data,spearman_data = correlation_matrix(target_data1,150)
 
 	return cov_data,pearson_data,spearman_data
 
