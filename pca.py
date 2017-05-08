@@ -52,9 +52,7 @@ def cov_matrix(data,n):
 	#eig_test = [[-.67787, -.73517],[-.73517, 0.67787]]
 
 	final_data = np.dot(cov_eigvec,data)
-	#plt.plot(final_data[0],final_data[1],'bo')
-	#plt.show()
-
+	
 	select = selection(final_data)
 
 	for index in select:
@@ -104,7 +102,7 @@ def main():
 
 	iris = datasets.load_iris()
 	iris_X = iris.data
-
+	print(iris)
 	X = [[] for i in range(0,len(iris.feature_names))]
 	for i in range(0,len(iris.feature_names)):
 		for sample in iris_X:
@@ -125,5 +123,8 @@ def main():
 
 	return cov_data,pearson_data,spearman_data
 
+
+
 if __name__ == "__main__":
 	main()
+
