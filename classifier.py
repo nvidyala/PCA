@@ -24,7 +24,8 @@ def main():
 	cov = (clf1.score(X1_test,y1_test))
 	corr = (max(clf2.score(X2_test,y2_test),clf3.score(X3_test,y3_test)))
 
-	return cov,corr
+	print(cov,corr)
 
 if __name__ == "__main__":
 	main()
+
