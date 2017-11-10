@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import datasets
 from sklearn import svm
 import numpy as np
+import matplotlib.pyplot as plt
 
 def main():
 
@@ -22,9 +23,13 @@ def main():
 	clf3.fit(X3_train,y3_train)
 
 	cov = (clf1.score(X1_test,y1_test))
+	corr1 = clf2.score(X2_test,y2_test)
+	corr2 = clf3.score(X3_test,y3_test)
 	corr = (max(clf2.score(X2_test,y2_test),clf3.score(X3_test,y3_test)))
-
-	print(cov,corr)
+	x = [cov,corr1,corr2]
+	plt.hist(x)
+	plt.ylabel('Classification Scores')
+	plt.show()
 
 if __name__ == "__main__":
 	main()
