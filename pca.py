@@ -58,12 +58,14 @@ def cov_matrix(data,n):
 	for index in select:
 		np.delete(final_data,index)
 
+	#print(final_data)
+
 	return final_data
 
 
 
 def correlation_matrix(data,n):
-
+	#print(data)
 	pearson = []
 	spearman = []
 
@@ -96,13 +98,20 @@ def correlation_matrix(data,n):
 	for index in select_s:
 		spearman_data = np.delete(spearman_data,index,0)
 
+	# print(pearson_data)
+	# print(spearman_data)
+	# print(select_s)
+	# print(select_p)
+	# plt.plot(pearson_data,spearman_data)
+	# plt.show()
+
 	return pearson_data,spearman_data
 
 def main():
 
 	iris = datasets.load_iris()
 	iris_X = iris.data
-	print(iris)
+	#print(iris)
 	X = [[] for i in range(0,len(iris.feature_names))]
 	for i in range(0,len(iris.feature_names)):
 		for sample in iris_X:
