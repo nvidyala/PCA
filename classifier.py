@@ -5,7 +5,11 @@ from sklearn import svm
 import numpy as np
 import matplotlib.pyplot as plt
 
-def main():
+y = []
+cov1 = []
+cov2 = []
+cov3 = []
+def classifier():
 
 	iris = datasets.load_iris()
 	X1,X2,X3 = [np.transpose(X) for X in pca.main()]
@@ -27,10 +31,32 @@ def main():
 	corr2 = clf3.score(X3_test,y3_test)
 	corr = (max(clf2.score(X2_test,y2_test),clf3.score(X3_test,y3_test)))
 	x = [cov,corr1,corr2]
-	plt.hist(x)
-	plt.ylabel('Classification Scores')
-	plt.show()
+	y.append(x)
+	print(y)
+	cov1.append(x[0])
+	cov2.append(x[1])
+	cov3.append(x[2])
+	
 
+def main():
+
+	domain = []
+	test = []
+	numiter = 500
+	for i in range(numiter):
+		classifier()
+	
+	for i in range(numiter):
+		domain.append(i)
+		test.append(0.0)
+
+
+
+	plt.plot(domain,cov1,'ro',markersize=1)
+	plt.plot(domain,cov2,'go',markersize=1)
+	plt.plot(domain,cov3,'bo',markersize=1)
+	plt.plot(domain,test,'wo')
+	plt.show()
+	
 if __name__ == "__main__":
 	main()
-
